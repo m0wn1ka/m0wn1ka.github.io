@@ -1,0 +1,134 @@
+<html>
+  <pre>
+    ecure Shell, sometimes referred to as Secure Socket Shell, is a protocol which allows you to connect securely to 
+    a remote computer or a server by using a text-based interface.
+du command
+
+find . -type f -name "*.txt"-------------uploaded
+
+find . -type f -size 1033c ! -executable -exec file '{}' \; | grep ASCII
+
+ 2>/dev/null
+<--pwd for natas 8 a6bZCNYwdKqN5cGP11ZdtPg0iImQQhAB
+for natas10 D44EcsFkLxPIkAAKLosx8z3hxX1Z4MCE	========================
+  positon independet execution --pie(address chage
+address space layout randomizaiton aslr
+cheksec
+readelf -s program name
+after gcc running we will get a elf file 	
+ex:gcc myfile.c -o myelf
+readelf -h myelf(for headers)
+readelf -S myelf( display information about the different sections of the process’ address space.)
+readelf -s myelf(for symbols)
+-d dynamic section  -r relocaiton section
+
+pwn cyclic 100 
+or pattern=cyclic(100)
+offset=cyclic_find(crash output)
+
+
+->
+The dmesg command in Linux is used to display the kernel ring buffer, which contains various system messages related to device drivers, 
+  hardware events, and other kernel-level activities. It allows you to view the recent kernel messages and can be useful for troubleshooting 
+  hardware or driver-related issues
+
+
+->pwn cyclic -l address
+
+from pwn import *
+
+----------uploaded
+binary_path = '/path/to/target/binary'
+elf = ELF(binary_path)
+
+process = elf.process()
+
+process.sendline('input')
+output = process.recvline()
+process.interactive()
+
+process.close()
+
+curl -i	
+
+Using the -x option with curl allows you to route your HTTP request through a proxy server, which can be useful in scenarios where you need 
+  to access resources that are otherwise restricted or to monitor and analyze the traffic going through the proxy.
+==============================================
+  Configuration files are YAML- or JSON-formatted documents with a . config f
+google dorking 
+sitemap analytics
+
+find -name passwords.txt
+$ find -name *.txt
+$ wc -l access.log
+python3 -m http.server
+  ==================================
+  An OVA file (Open Virtualization Appliance) is a single file archive that contains all the necessary information to deploy and run a virtual machine (VM). It is a standardized file format that encapsulates an entire virtual machine, including its virtual disk(s), configuration settings, and sometimes other associated files.
+rubber ducky
+how to make a ova file
+
+top command for system time up,ram,cpu usage,proceess runngin
+ps 
+ps aux
+
+ GPG (Gnu Privacy Guard) keys.
+  ========================================
+  how to open .ejs files
+https://nextjs.org/learn/foundations/how-nextjs-works/next-steps
+  ============================
+  SHA 256 is a part of the SHA 2 family of algorithms, where SHA stands for Secure Hash Algorithm. 
+
+A Definitive Guide to Learn The SHA-256 (Secure Hash Algorithms)
+Lesson 10 of 62By Baivab Kumar Jena
+
+Last updated on Feb 24, 2023264286
+A Definitive Guide to Learn the SHA 256 Algorithm
+PreviousNext
+Table of Contents
+What is Hashing?What is the SHA-256 Algorithm?What are the Characteristics of the SHA-256 Algorithm?Steps in SHA-256 AlgorithmApplications of SHA algorithmView More
+Among the many advancements seen in network security, encryption and hashing have been the core principles of additional security modules. The secure hash algorithm with a digest size of 256 bits, or the SHA 256 algorithm, is one of the most widely used hash algorithms. While there are other variants, SHA 256 has been at the forefront of real-world applications.
+
+To understand the working of the SHA 256 algorithm and delve deeper into the realm of cybersecurity you need first to understand hashing and its functional characteristics.
+
+Learn How to Secure, Test & Manage IT Systems
+Advanced Executive Program in CybersecurityEXPLORE PROGRAMLearn How to Secure, Test & Manage IT Systems
+What is Hashing?
+Hashing is the process of scrambling raw information to the extent that it cannot reproduce it back to its original form. It takes a piece of information and passes it through a function that performs mathematical operations on the plaintext. This function is called the hash function, and the output is called the hash value/digest. 
+
+hashing1
+
+As seen from the above image, the hash function is responsible for converting the plaintext to its respective hash digest. They are designed to be irreversible, which means your digest should not provide you with the original plaintext by any means necessary. Hash functions also provide the same output value if the input remains unchanged, irrespective of the number of iterations.
+
+There are two primary applications of hashing:
+
+Password Hashes: In most website servers, it converts user passwords into a hash value before being stored on the server. It compares the hash value re-calculated during login to the one stored in the database for validation.
+passwords.
+
+Integrity Verification: When it uploads a file to a website, it also shared its hash as a bundle. When a user downloads it, it can recalculate the hash and compare it to establish data integrity.
+integrity1.
+
+Now that you understand the working of hash functions, look at the key topic in hand - SHA 256 algorithm.
+
+Clear CompTIA, CEH, and CISSP Certifications!
+Cyber Security Expert Master's ProgramEXPLORE PROGRAMClear CompTIA, CEH, and CISSP Certifications!
+What is the SHA-256 Algorithm?
+SHA 256 is a part of the SHA 2 family of algorithms, where SHA stands for Secure Hash Algorithm. Published in 2001, it was a joint effort between the NSA and NIST to introduce a successor to the SHA 1 family, which was slowly losing strength against brute force attacks.
+
+The significance of the 256 in the name stands for the final hash digest value, i.e. irrespective of the size of plaintext/cleartext, the hash value will always be 256 bits.
+
+The other algorithms in the SHA family are more or less similar to SHA 256. Now, look into knowing a little more about their guidelines.
+
+What are the Characteristics of the SHA-256 Algorithm?
+sha_chars.
+
+Some of the standout features of the SHA algorithm are as follows:
+
+Message Length: The length of the cleartext should be less than 264 bits. The size needs to be in the comparison area to keep the digest as random as possible.
+Digest Length: The length of the hash digest should be 256 bits in SHA 256 algorithm, 512 bits in SHA-512, and so on. Bigger digests usually suggest significantly more calculations at the cost of speed and space.
+
+yet another markup language
+yaml
+
+Volatility is an open-source memory forensics framework for incident response and malware analysis
+  </pre>
+</html>

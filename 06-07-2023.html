@@ -1,0 +1,96 @@
+<html>
+  <head>
+    <title>06-07-2023</title>
+  </head>
+  <body>
+    <pre>
+      from internet and various books(mastering etheruim book)
+      <code>
+        ipfs inter planetary file system 
+dapps -storage is an issue so,store off the chain
+swarm
+-----
+whiper
+
+
+Gas cost is the number of units of gas required to perform a particular operation.
+• Gas price is the amount of ether you are willing to pay per unit of gas when you
+send your transaction to the Ethereum network
+
+
+
+Deleting a contract (SELFDESTRUCT) is worth a refund of 24,000 gas.
+• Changing a storage address from a nonzero value to zero (SSTORE[x] = 0) is
+worth a refund of 15,000 gas.
+
+
+
+The block gas limit is the maximum amount of gas that may be consumed by all the
+transactions in a block, and constrains how many transactions can fit into a block	
+
+
+PoW consensus is a careful balance of risk
+and reward that drives participants to behave honestly out of self-interest.	
+
+
+ethash ->casper
+
+from mastering etherium book page 359 
+In general, a PoS algorithm works as follows. The blockchain keeps track of a set of
+validators, and anyone who holds the blockchain’s base cryptocurrency (in Ethereum’s
+case, ether) can become a validator by sending a special type of transaction that locks
+up their ether into a deposit. The validators take turns proposing and voting on the
+next valid block, and the weight of each validator’s vote depends on the size of its
+deposit (i.e., stake). Importantly, a validator risks losing their deposit if the block they
+staked it on is rejected by the majority of validators. Conversely, validators earn a
+small reward, proportional to their deposited stake, for every block that is accepted
+by the majority. Thus, PoS forces validators to act honestly and follow the consensus
+rules, by a system of reward and punishment. The major difference between PoS and
+PoW is that the punishment in PoS is intrinsic to the blockchain (e.g., loss of staked
+ether), whereas in PoW the punishment is extrinsic (e.g., loss of funds spent on
+electricity).
+
+
+
+-> Ethash is dependent on the generation and
+analysis of a large dataset, known as a directed acyclic graph (or, more simply, “the
+DAG”). The DAG had an initial size of about 1 GB and will continue to slowly and
+linearly grow in size, being updated once every epoch (30,000 blocks, or roughly 125
+hours)
+
+->applicationspecific integrated circuits (ASIC) 
+
+        ------------------------------
+        ->gdb is the acronym for GNU Debugger. This tool helps to debug the programs written in C, C++, Ada, Fortran, etc
+
+
+
+->The EIP register, which stands for "Extended Instruction Pointer," is a register used in x86 architecture processors (program counter)
+
+x/nfu <address>
+
+info registers
+info locals\
+
+
+->for programs we can overflow buffer,find the offset of eip 
+  --------------------------------------
+  from freecode camp website and other
+  Redux is a predictable state container for JavaScript apps
+
+ Redux is a state management library that you can use with any JS library or framewor
+
+if the store is provided to the App.js (by wrapping the App component within the <Provider> </Provider> tag) 
+hen all its children (children components of App.js) can also access the state of the application from the store. This makes it act as a global state
+
+
+Reducers, as the name suggests, take in two things: previous state and an action. Then they reduce it (read it return) to one entity: the new updated instance of state
+
+
+Whenever an action is dispatched, all the reducers are activated. Each reducer filters out the action using a switch
+ statement switching on the action type. Whenever the switch statement matches with the action passed, the corresponding
+ reducers take the necessary action to make the update and return a fresh new instance of the global state.
+      </code>
+    </pre>
+  </body>
+</html>

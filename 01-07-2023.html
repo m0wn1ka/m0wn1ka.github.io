@@ -1,0 +1,177 @@
+<html>
+<head>
+<title>
+01-07-2023</title>
+</head>
+<body>
+  what i got from various sites today
+  <pre>
+     more advanced category of mathematical functions that is useful in cryptography is
+based on arithmetic operations on an elliptic curve. In elliptic curve arithmetic, mul‐
+tiplication modulo a prime is simple but division (the inverse) is practically impossi‐
+ble. This is called the discrete logarithm problem and there are currently no known
+trapdoors. Elliptic curve cryptography is used extensively in modern computer sys‐
+tems and is the basis of Ethereum’s (and other cryptocurrencies’) use of private keys
+and digital signatures
+
+
+->In Ethereum, we use public key cryptography (also known as asymmetric cryptogra‐
+phy
+
+
+->They are considered a “pair” because the public key is derived from the private keyTogether, they represent an Ethereum account by providing, respectively, a publicly
+accessible account handle (the address) and private control over access to any ether in
+the account and over any authentication the account needs when using smart con‐
+tracts. The private key controls access by being the unique piece of information
+needed to create digital signatures, which are required to sign transactions to spend
+any funds in the account. Digital signatures are also used to authenticate owners or
+users of contracts
+
+
+-> The mathematics of cryptog‐
+raphy—in this case, elliptic curve cryptography—provides a way for the message (i.e.,
+the transaction details) to be combined with the private key to create a code that can
+only be produced with knowledge of the private key. That code is called the digital
+signature
+
+
+->Elliptic curve mathematics means that anyone can ver‐
+ify that a transaction is valid, by checking that the digital signature matches the trans‐
+action details and the Ethereum address to which access is being requested. The
+verification doesn’t involve the private key at all; that remains private. However, the
+verification process determines beyond doubt that the transaction could have only
+come from someone with the private key that corresponds to the public key behind
+the Ethereum address. This is the “magic” of public key cryptography.
+
+
+
+
+->K = k * G, where k is the private key, G is a constant
+point called the generator point, K is the resulting public key, and * is the special elliptic curve multiplication
+
+
+->Elliptic curve multiplication is a type of function that cryptogra‐
+phers call a “one-way” function: it is easy to do in one direction
+(multiplication) and impossible to do in the reverse direction (divi‐
+sion).
+
+
+->At a high level, a wallet is a software application that serves as the primary user inter‐
+face to Ethereum. The wallet controls access to a user’s money, managing keys and
+addresses, tracking the balance, and creating and signing transactions. In addition,
+some Ethereum wallets can also interact with contracts, such as ERC20 tokens.
+
+
+->The ether or other
+tokens are recorded on the Ethereum blockchain. Users control the tokens on the
+network by signing transactions with the keys in their wallets. In a sense, an Ether‐
+eum wallet is a keychain
+
+
+->you can move your account handling from
+your current wallet to a different wallet, if you grow to dislike the wallet app you
+started out using
+
+
+->s. Users sign
+transactions with the private keys, thereby proving they own the
+ether. The ether is stored on the blockchain
+
+
+
+->if someone gets hold of your mnemonic code words, then they can also recreate your
+wallet and thus gain access to your ether and smart contracts.
+
+
+
+->Transactions are signed messages originated by an externally owned account, trans‐
+mitted by the Ethereum network, and recorded on the Ethereum blockchain.t they are the only things that can trigger
+ a change of state,
+or cause a contract to execute in the EVM
+
+
+
+
+->A transaction is a serialized binary message that contains the following data:
+Nonce
+A sequence number, issued by the originating EOA, used to prevent message
+replay
+
+Gas price
+The price of gas (in wei) the originator is willing to pay
+Gas limit
+The maximum amount of gas the originator is willing to buy for this transaction
+Recipient
+The destination Ethereum address
+Value
+The amount of ether to send to the destination
+Data
+The variable-length binary data payload
+v,r,s
+The three components of an ECDSA digital signature of the originating EOA
+
+
+->The transaction message’s structure is serialized using the Recursive Length Prefix
+(RLP) encoding scheme, which was created specifically for simple, byte-perfect data
+serialization in Ethereum
+er metadata frequently added to the
+transaction by client software includes the block number (once it is mined and
+included in the blockchain) and a transaction ID (calculated hash).
+
+
+-> this data is
+derived from the transaction, and does not form part of the transaction message
+itself.
+
+
+*nonce 
+
+In practical terms, the nonce is an up-to-date count of the number of confirmed (i.e.,
+on-chain) transactions that have originated from an account
+
+mempool
+
+
+->A transaction with only value is a payment. A transaction with only data is an invoca‐
+tion. A transaction with both value and data is both a payment and an invocation. A
+transaction with neither value nor data—well that’s probably just a waste of gas! But it
+is still possible.
+
+
+
+->When you construct an Ethereum transaction that contains a value, it is the equiva‐
+lent of a payment. Such transactions behave differently depending on whether the
+destination address is a contract or not.
+
+
+->If the destination address (to) is a contract, then the EVM will execute the contract
+and will attempt to call the function named in the data payload of your transaction. If
+there is no data in your transaction, the EVM will call a fallback function and, if that
+function is payable, will execute it to determine what to do next. If there is no fallback
+function, then the effect of the transaction will be to increase the balance of the con‐
+tract, exactly like a payment to a wallet.
+
+->A contract can reject incoming payments by throwing an exception immediately
+when a function is called, or as determined by conditions coded in a function
+
+
+->Contract creation transactions are sent
+to a special destination address called the zero address; the to field in a contract regis‐
+tration transaction contains the address 0x0.
+
+
+->A contract creation transaction need only contain a data payload that contains the
+compiled bytecode which will create the contract.
+------------------
+nato phonetic alphbets
+a-apple,aeroplane
+b-ball,ba
+
+
+headers of files,png ,jpeg
+
+xxd decode | head
+hexdum then piping head print
+  </pre>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<html>
+  <body>
+    <pre>
+      <code>
+        /etc/shadow
+gcc -shared -fPIC unrandom.c -o unrandom.so(pic postion independent code)(so shared object file)
+ldd our_File
+LD_PRELOAD=$PWD/unrandom.so ./random_nums
+inspect_open.c:
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+#define _GNU_SOURCE
+#include <dlfcn.h>
+ 
+typedef int (*orig_open_f_type)(const char *pathname, int flags);
+ 
+int open(const char *pathname, int flags, ...)
+{
+    /* Some evil injected code goes here. */
+ 
+    orig_open_f_type orig_open;
+    orig_open = (orig_open_f_type)dlsym(RTLD_NEXT,"open");
+    return orig_open(pathname,flags);
+}
+https://rafalcieslak.wordpress.com/2013/04/02/dynamic-linker-tricks-using-ld_preload-to-cheat-inject-features-and-investigate-programs/
+id zero root
+ctrl+r ctrl+x in sudo nano
+      </code>
+    </pre>
+  </body>
+</html>

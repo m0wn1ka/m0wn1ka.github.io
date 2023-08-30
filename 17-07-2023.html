@@ -1,0 +1,72 @@
+<html>
+  <pre>
+    label:is a particular instace of data,x
+ex:spam or not_spam
+labeled example has both features and label
+these are used to train models
+->unlabeled example has features but not label
+these are used for making predictions on new data
+->model :mpas examples to predicted labesl
+defined by internal parameters
+->regression model predicts continuours values
+->classification model predicts discrete values
+--------------------
+take on x axis area of hous and on y axis the cost
+try to fit a line on the dots
+yeah that is a model
+there is some loss the diff b/w actual and predicted
+l2 loss funciton ---------- squared loss
+(actual-predicted)^2
+---------------
+ In supervised learning, a machine learning algorithm builds
+ a model by examining many examples and attempting to find a
+ model that minimizes loss; this process is called empirical risk minimization.
+------------
+gradient descent-----------
+we reapeatedly take small steps in the direction that minimizes the loss
+we call these gradient stesps (negative gradient steps)
+the strategy is called gradient descent
+---model prediction funtion  ,makes parameter changes,calculate loss,update parametes
+--------learning rate
+Gradient descent algorithms multiply the gradient by a scalar known as the
+ learning rate (also sometimes called step size) to determine the next point.
+ For example, if the gradient magnitude is 2.5 and the learning rate is 0.01,
+ then the gradient descent algorithm will pick the next point 0.025 away from
+ the previous point
+--------
+hyper parameters-----------
+Hyperparameters are the knobs that programmers tweak in machine
+ learning algorithms. Most machine learning programmers spend a fair
+ amount of time tuning the learning rate. If you pick a learning rate
+ that is too small, learning will take too long
+-----------------batch
+In gradient descent, a batch is the total number of examples
+ you use to calculate the gradient in a single iteration
+
+--------------------
+What if we could get the right gradient on average for much less computation?
+ By choosing examples at random from our data set, we could estimate (albeit,
+ noisily) a big average from a much smaller one. Stochastic gradient descent
+ (SGD) takes this idea to the extreme--it uses only a single example (a batch 
+size of 1) per iteration. Given enough iterations, SGD works but is very noisy
+. The term "stochastic" indicates that the one example comprising each batch i
+s chosen at random.
+----------
+hree basic assumptions in all of the above:
+
+We draw examples independently and identically (i.i.d.) at random from the distribution
+The distribution is stationary: It doesn't change over time
+We always pull from the same distribution: Including training, validation, and test sets
+------------------
+static vs dynamic training
+static-we give data to it at once it learns at once that is al it will be asked to predict (jsut predict)
+dynamic-we continuosly ask it to predict and update it 
+----------------
+online inference vs offline inference
+Online Inference
+
+Predict on demand, using a server.
+Upside: can predict any new item as it comes in -- great for long tai
+
+  </pre>
+</html>

@@ -1,0 +1,88 @@
+<html>
+ <body>
+   <pre>
+     all that i got from various sites
+     <code>
+       What is a TXZ file?
+Archive created with Tar and XZ utilities; contains one or more files first archived using
+ Tar and then compressed using XZ compression; compressed using a high compression ratio.
+
+->Decentralized Identifier (DID) - proof of ownership of a digital identity (ID) issued by autonomous
+ decentralized platforms.
+
+
+->DiD_2dcf296879294845db88e75484d3ad8b195d37a9.
+The basic format of a DID is 
+did:example:98765456789876ghjkjbv
+scheme,didmethod,did method specific string
+
+
+from forbes.com
+Two DIDs can actually have the same string, but not two DIDs with the same DID Method.
+
+For example, given the DIDs below (which are fictional):
+
+A: did:forbes:william-anderson
+
+B: did:medium:william-anderson
+
+https://www.forbes.com/sites/williamanderson/2023/03/15/dids-on-the-blockchain-how-decentralized-identifiers-are-the-future-of-online-identity
+
+
+tar Jxvf  DiD_2dcf296879294845db88e75484d3ad8b195d37a9.txz
+$output = $twig->render("Dear {first_name},", array("first_name" => $user.first_name) );---not vulnearble to serverside template injection
+
+$output = $twig->render("Dear " . $_GET['name']);--vulnearable
+
+${{<%[%'"}}%\--try to inject these ,look for errors in response
+try to to give${4+3}
+  Solidity also contains pure functions, which means you're not even accessing any data in the app
+ a view function, meaning it's only viewing the data but not modifying it:
+In Solidity, the function declaration contains the type of the return value
+ ecure Shell, sometimes referred to as Secure Socket Shell, is a protocol which allows you to connect securely to a remote computer or a server by using a text-based interface.
+du command
+
+find . -type f -name "*.txt"
+
+find . -type f -size 1033c ! -executable -exec file '{}' \; | grep ASCII
+
+ 2>/dev/null
+<--pwd for natas 8 a6bZCNYwdKqN5cGP11ZdtPg0iImQQhAB
+for natas10 D44EcsFkLxPIkAAKLosx8z3hxX1Z4MCE	
+  mapping is essentially a key-value store for storing and looking up data. In the first
+ example, the key is an address and the value is a uint, and in the second example the '
+key is a uint and the value a string.
+
+
+// For a financial app, storing a uint that holds the user's account balance:
+mapping (address => uint) public accountBalance;
+// Or could be used to store / lookup usernames based on userId
+mapping (uint => string) userIdToName;
+
+msg.sender, which refers to the address of the person (or smart contract) who called the current function.
+
+
+mapping (address => uint) favoriteNumber;
+
+function setMyNumber(uint _myNumber) public {
+  // Update our `favoriteNumber` mapping to store `_myNumber` under `msg.sender`
+  favoriteNumber[msg.sender] = _myNumber;
+  // ^ The syntax for storing data in a mapping is just like with arrays
+}
+
+function whatIsMyNumber() public view returns (uint) {
+  // Retrieve the value stored in the sender's address
+  // Will be `0` if the sender hasn't called `setMyNumber` yet
+  return favoriteNumber[msg.sender];
+}
+
+
+In Solidity, there are two locations you can store variables — in storage and in memory.
+
+Storage refers to variables stored permanently on the blockchain. Memory variables are temporary, and are erased between external function calls to your contract.
+
+State variables (variables declared outside of functions) are by default storage and written permanently to the blockchain, while variables declared inside functions are memory and will disappear when the function call ends.
+     </code>
+   </pre>
+ </body>
+</html>

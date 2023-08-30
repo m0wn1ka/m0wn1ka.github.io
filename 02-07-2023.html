@@ -1,0 +1,312 @@
+<html>
+  <head>
+    <title>02-07-2023</title>
+  </head>
+  <body>
+    what i got today from internet and from mastering etherium book
+    <pre>
+	    <code>
+      Solidity programs can contain a pragma directive that
+specifies the minimum and maximum versions of Solidity that it is compatible with,
+and can be used to compile your contract
+
+
+->global objects in evm block, msg, and tx objects
+
+->Solidity exposes a number
+of EVM opcodes as predefined functions
+
+
+
+->The msg object is the transaction call (EOA originated) or message call (contract ori‐
+ginated) that launched this contract execution.
+
+
+msg.sender
+We’ve already used this one. It represents the address that initiated this contract
+call, not necessarily the originating EOA that sent the transaction. If our contract
+was called directly by an EOA transaction, then this is the address that signed the
+transaction, but otherwise it will be a contract address.
+msg.value
+The value of ether sent with this call (in wei).
+msg.gas
+The amount of gas left in the gas supply of this execution environment. This was
+deprecated in Solidity v0.4.21 and replaced by the gasleft function.
+msg.data
+The data payload of this call into our contract.
+msg.sig
+The first four bytes of the data payload, which is the function selector
+
+
+
+
+The tx object provides a means of accessing transaction-related information:
+tx.gas
+tx.origin
+
+
+
+->The block object contains information about the current block:
+block hash
+block number
+block gas
+block difficulty
+block coin base:The address of the recipient of the current block’s fees and block reward.
+block time stamp
+
+
+address.balance
+The balance of the address, in wei. For example, the current contract balance is
+address(this).balance.
+address.transfer(amount)
+Transfers the amount (in wei) to this address, throwing an exception on any
+error. We used this function in our Faucet example as a method on the
+msg.sender address, as msg.sender.transfer
+
+
+
+builtin funcitons
+selfdestrunct(recipient_address)
+Deletes the current contract, sending any remaining ether in the account to the
+recipient address.
+addmod, mulmod
+
+keccak256, sha256, sha3, ripemd160
+
+
+
+Solidity’s principal data type is contract; our Faucet example simply defines a
+contract object. Similar to any object in an object-oriented language, the contract is
+a container that includes data and methods.
+->interface
+->library
+
+
+
+
+The syntax we use to declare a function in Solidity is as follows:
+function FunctionName([parameters]) {public|private|internal|external}
+[pure|constant|view|payable] [modifiers] [returns (return types)]
+
+
+
+One function in each contract may be defined without a name, in which case it is
+the fallback function, which is called when no other function is named. The fall‐
+back function cannot have any arguments or return anything.
+
+
+->external
+External functions are like public functions, except they cannot be called from
+within the contract unless explicitly prefixed with the keyword this
+->The keywords described here only affect how and
+when a function can be called.
+
+
+
+payable
+A payable function is one that can accept incoming payments. Functions not
+declared as payable will reject incoming payments. There are two exceptions,
+due to design decisions in the EVM: coinbase payments and SELFDESTRUCT
+inheritance will be paid even if the fallback function is not declared as payable,
+but this makes sense because code execution is not part of those payments
+anyway
+
+selfdestruct(address recipient);
+
+->Our
+constructor sets the owner variable, and the selfdestruct function will first check
+that the owner called it directly
+
+
+We used msg.sender in the
+withdraw function to identify the initiator of the withdrawal request
+
+
+pragma solidity ^0.4.2;
+contract Faucet{
+	address owner;
+	constructor(){
+		owner=msg.sender;
+	}
+
+
+
+-----------------------
+function destroy()public{
+	require(msg.sender==owner);
+	selfdestruct(owner);
+	}
+
+------------
+function modifiers:----
+modifier onlyOwner{
+	require(msg.sender==owner);
+	_;
+	}
+
+----
+(_;). This placeholder is
+replaced by the code of the function that is being modified. Essentially, the modifier is
+“wrapped around” the modified function, placing its code in the location identified
+by the underscore character
+
+
+
+To apply a modifier, you add its name to the function declaration. More than one
+modifier can be applied to a function; they are applied in the sequence they are
+declared, as a comma-separated list.
+Let’s rewrite our destroy function to use the onlyOwner modifier:
+function destroy() public onlyOwner {
+ selfdestruct(owner);
+}
+
+
+
+
+Inside a modifier, you can access all the values (variables and arguments) visible to
+the modified function. In this case, we can access the owner variable, which is
+declared within the contract. However, the inverse is not true: you cannot access any
+of the modifier’s variables inside the modified function.
+
+
+
+contract Child is Parent1, Parent2 {
+ ...
+}
+
+
+
+
+
+contract owned{
+	address owner;
+	constructor(){
+		owner=msg.sender;
+		}
+	modifier onlyowner{
+		require(msg.sender==owner);
+		_;
+		}
+	}
+
+contrat mortal is owned{
+	function destroy() public onlyOwned{
+		selfdestruct(owner);
+		}
+	}
+-----------------------
+contract Faucet is mortal{
+	function withdraw(unit withdraw_amount)public{
+		require(withdraw_amount<=0.1ether);
+		msg.sender.transfer(withdraw_amount);
+		}
+	function ()public payable{}
+
+
+
+
+Error Handling (assert, require, revert)
+By convention, assert
+is used when the outcome is expected to be true, meaning that we use assert to test
+internal conditions.
+require(msg.sender == owner, "Only the contract owner can call this function");
+
+
+The revert and throw functions halt the execution of the contract and revert any
+state changes
+The revert function can also take an
+error message as the only argument, which is recorded in the transaction log
+
+require(this.balance >= withdraw_amount,
+"Insufficient balance in faucet for withdrawal request");
+msg.sender.transfer(withdraw_amount);
+Additional error-checking code like this will increase gas consumption slightly, but it
+offers better error reporting than if omitted
+
+
+
+e transaction receipt contains log entries that provide
+information about the actions that occurred during the execution of the transaction.
+Events are the Solidity high-level objects that are used to construct these logs.
+
+
+Events are especially useful for light clients and DApp services, which can “watch” for
+specific events and report them to the user interface, or make a change in the state of
+the application to reflect an event in an underlying contract.
+
+
+Event objects take arguments that are serialized and recorded in the transaction logs,
+in the blockchain. You can supply the keyword indexed before an argument, to make
+the value part of an indexed table (hash table) that can be searched or filtered by an
+application
+
+
+define events
+contract Faucet is mortal {
+event Withdrawal(address indexed to, uint amount);
+event Deposit(address indexed from, uint amount);
+
+
+e emit keyword to incorporate the event data in the transaction logs:
+function withdrdaw(uint withdraw_amount )public{
+	msg.sender.transfer(withdraw_amount);
+	emit Withdrawl(msg.sender,,withdraw_amount);
+	}
+function ()public payable{
+	emit Deposit(msg.sender,msg.value);
+
+
+-----------------
+Example 7-3. Faucet8.sol: Revised Faucet contract, with events
+1 // Version of Solidity compiler this program was written for
+2 pragma solidity ^0.4.22;
+3
+4 contract owned {
+5 address owner;
+6 // Contract constructor: set owner
+7 constructor() {
+8 owner = msg.sender;
+9 }
+10 // Access control modifier
+11 modifier onlyOwner {
+12 require(msg.sender == owner,
+13 "Only the contract owner can call this function");
+14 _;
+15 }
+16 }
+17
+18 contract mortal is owned {
+19 // Contract destructor
+20 function destroy() public onlyOwner {
+21 selfdestruct(owner);
+22 }
+23 }
+24
+25 contract Faucet is mortal {
+26 event Withdrawal(address indexed to, uint amount);
+27 event Deposit(address indexed from, uint amount);
+30 function withdraw(uint withdraw_amount) public {
+31 // Limit withdrawal amount
+32 require(withdraw_amount <= 0.1 ether);
+33 require(this.balance >= withdraw_amount,
+34 "Insufficient balance in faucet for withdrawal request");
+35 // Send the amount to the address that requested it
+36 msg.sender.transfer(withdraw_amount);
+37 emit Withdrawal(msg.sender, withdraw_amount);
+38 }
+39 // Accept any incoming amount
+40 function () public payable {
+41 emit Deposit(msg.sender, msg.value);
+42 }
+43 }
+
+
+
+
+The web3.js library provides a data structure that con‐
+tains a transaction’s logs. Within those we can see the events generated by the
+transaction
+</code>
+    </pre>
+  </body>
+</html>

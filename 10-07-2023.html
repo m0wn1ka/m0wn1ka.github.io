@@ -1,0 +1,47 @@
+<html>
+  <body>
+    <pre>
+      <code>
+        positon independet execution --pie(address chage
+address space layout randomizaiton aslr
+cheksec
+readelf -s program name
+after gcc running we will get a elf file 	
+ex:gcc myfile.c -o myelf
+readelf -h myelf(for headers)
+readelf -S myelf( display information about the different sections of the process’ address space.)
+readelf -s myelf(for symbols)
+-d dynamic section  -r relocaiton section
+
+pwn cyclic 100 
+or pattern=cyclic(100)
+offset=cyclic_find(crash output)
+
+
+->
+The dmesg command in Linux is used to display the kernel ring buffer, which contains various system messages related to device drivers, hardware events, and other kernel-level activities. It allows you to view the recent kernel messages and can be useful for troubleshooting hardware or driver-related issues
+
+
+->pwn cyclic -l address
+
+from pwn import *
+
+
+binary_path = '/path/to/target/binary'
+elf = ELF(binary_path)
+
+process = elf.process()
+
+process.sendline('input')
+output = process.recvline()
+process.interactive()
+
+process.close()
+
+curl -i	
+
+Using the -x option with curl allows you to route your HTTP request through a proxy server, which can be useful in scenarios where you need to access resources that are otherwise restricted or to monitor and analyze the traffic going through the proxy.
+      </code>
+    </pre>
+  </body>
+</html>

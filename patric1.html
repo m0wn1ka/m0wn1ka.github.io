@@ -1,0 +1,107 @@
+<html>
+  <pre>
+  oracle problem --block chain can get real world data
+bitcoin -intentialnally turing icomplete
+
+blockchain oracle:device that interact with off chain world to provide external data &computation to smart contracts:chainlink
+hybrid smart contracts:onchain +offchain
+
+uniswap
+erc20 tokesn
+decentralised autonomas organisations dao
+non fungible tokens nft
+
+
+=====
+polygon,linean:evm compatibel chains?
+faucet:
+sepolia etherscan io:to check balance of our accoutn
+
+faucets chain link ,alchemy seplolia faucet'':gives ether
+walletconnect,coinbasewallet,metamask:wallets
+
+https://andersbrownworth.com/blockchain/hash
+genesis block 
+blockno,nonce,data,prevhash=>hash
+
+elliptic curve digital signature alogrithm
+generate public key for private key 
+with that sign
+  ======================
+  on message
+on private key
+=>signature
+===========
+signature+publickey+message::verification
+12 words phrase +accoutn =>secret key to sing?
+=============
+privatekey>public key>address
+secret pharse :get access to all acoouts created by that
+private key:access to that accoutn 
+  =========================
+  chain selection
+sybil resistance
+!part of consensus mechanism
+=============
+proof of work and longest chain rule :nakamoto consensus for chain selection
+block confirmation count :no of blocks added after of ours
+miners vs validators
+=========
+miners or validators get trasnaction fee+block reward
+block reaward is being halved after a cycle of x years repetedly
+51% attack	
+===========
+proof of stake:
+in this a random node is chosen ,it will add a new block ,all the rest will verify it
+:not every one need to find and waste energy
+===============
+layer1:base layer blockchain implementation:ex:bitcoin,etherium,avalanche
+layer2:an application built on top of layer1:ex:chain link,aribtraram?,optimism
+rollups
+sharding and rollups are solutions to scalability issures of layer1
+when many transactions try to get into a block gas prices increase :scalability
+===============
+https://github.com/Cyfrin/foundry-full-course-f23
+==================================
+public private internal external
+  =================================
+  pure:cant read anything from storage
+view:cant update any state
+these two dont cost	
+in solidity six places to staore
+stack,memroy,storage,calldata,code,logs
+::storage:a permant varible modifiable
+::calldata:a temp variable unmodifable
+::memroy::a temp var modifiable 
+===========
+outside a function ,avar is defaluted to be storage var
+::data location can be set only for array ,struct,mapping types
+::string is array of bytes hence need to specify storage locaiton
+=============
+smart contract connectivity problem :oracle problem
+chain link:decentralised oracle network
+data.chain.link website
+docs.chain.link website
+toread:chain link funcitons in above site
+============
+libraries
+to use a contract we need abi+its address
+my compiling it we get abi
+safemath
+uncheck
+verion belows 0.8 
+/* gfds*/
+//
+transfer,send,call
+underflow,overflow,typecasting
+immutable type,constatnt type
+error notowner()
+custom errors
+if (msg.sender != owner){revert notowner();}
+receive,fallback
+===========
+foundry:solidity based
+book.getfoundry.sh
+    </pre>
+
+</html>

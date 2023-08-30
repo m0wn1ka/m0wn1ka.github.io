@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h4>problem::</h4>
+    <pre>
+    While "Base" is not a Base:
+
+
+Repeat until you get the flag.
+
+Flag format: InvadersCTF{}
+<h4>flag.txt::VTFjMU1sbFhVbXhqYms1RVZrVmFOMU5FVG5OaVJFSm1XWHBDZEdKVVVuVmFSRTU1V0ROcmQyUldPREZrVjA1cVRYcE9hMDB5VWpsRApaejA5Q2c9PQo=</h4>
+<h4>solving::</h4>
+->the flag.txt has a trailing =
+->then i used <a href="https://www.base64decode.org/">base 64 decoder online</a>
+->it looks like the length is decreasing  but at the end the trailing = persists
+->i decoded the decoded one just like said in the hint 
+->then found this flag  InvadersCTF{H3ll0_c0mm4nd3r_y0u_5ucc33d3d}
+</pre>
+</body>
+</html>

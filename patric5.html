@@ -1,0 +1,63 @@
+<html>
+  this is my transaction hash 0xbea24a76e4f324053ff75220210f7ac8dd7bb58190b3265daaffaed7f818b7c6
+  <br>
+  u can view it be clicking <a href="https://sepolia.etherscan.io/tx/0xbea24a76e4f324053ff75220210f7ac8dd7bb58190b3265daaffaed7f818b7c6">here</a>
+  <br>
+  here is a screenshot from alchemy with my transaction <img src="Screenshot (41).png" alt="alchemy image">
+  ========================
+   mapping is essentially a key-value store for storing and looking up data. In the first
+ example, the key is an address and the value is a uint, and in the second example the '
+key is a uint and the value a string.
+----------------uploaded
+
+// For a financial app, storing a uint that holds the user's account balance:
+mapping (address => uint) public accountBalance;
+// Or could be used to store / lookup usernames based on userId
+mapping (uint => string) userIdToName;
+
+msg.sender, which refers to the address of the person (or smart contract) who called the current function.
+
+
+mapping (address => uint) favoriteNumber;
+
+function setMyNumber(uint _myNumber) public {
+  // Update our `favoriteNumber` mapping to store `_myNumber` under `msg.sender`
+  favoriteNumber[msg.sender] = _myNumber;
+  // ^ The syntax for storing data in a mapping is just like with arrays
+}
+
+function whatIsMyNumber() public view returns (uint) {
+  // Retrieve the value stored in the sender's address
+  // Will be `0` if the sender hasn't called `setMyNumber` yet
+  return favoriteNumber[msg.sender];
+}
+  ========
+  gas
+ether
+etherium
+etherium virtual machine
+ externally owned transaction
+contract
+metamask
+remix
+santhoshi nakamto
+solidity
+blockchain
+bitcoin
+miners
+decentralised applications
+turing completness
+merkle andpatrica tree
+etherium wallets types
+networks main ,ropsten
+  ===================
+
+
+In Solidity, there are two locations you can store variables — in storage and in memory.
+
+Storage refers to variables stored permanently on the blockchain. Memory variables are temporary, and are erased between external function calls to your contract.
+
+State variables (variables declared outside of functions) are by default storage and written permanently to the blockchain, while variables declared inside functions are memory and will disappear when the function call ends.
+<br>
+  a footer<br>{% include footer.html %}
+</html>

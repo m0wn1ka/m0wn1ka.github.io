@@ -1,0 +1,275 @@
+<html>
+
+<pre>
+<code>
+<img src="idor.png" alt="idor">
+  ====================
+<img src="idor1.png" alt="idor">
+  ====================
+<img src="idor2.png" alt="idor">
+  ====================
+<!-- <img src="idor3.png" alt="idor"> -->
+tried at first login as admin ,not working
+tried different request methods ,not working all other metods were disallowed
+tried to change cookie value
+checked all storage
+then from analysis source code throughly there appers no protection for flag.txt 
+it will give us when we are admin but we can directly access is 
+idor :insecure direct  object reference
+
+<img src="idor4.png" alt="idor">
+  =================================================
+  <h1>perfect pic</h1>
+here is the source <a href="perfect_pic.zip">download</a>
+<img src="perfect1.png">
+<img src="perfect2.png">
+  <img src="perfect3.png">
+this is the code of app.py
+<div>
+from flask import Flask, render_template, request
+from PIL import Image
+import exiftool
+import random
+import os
+
+app = Flask(__name__)
+app.debug = False
+
+os.system("mkdir /dev/shm/uploads/")
+app.config['UPLOAD_FOLDER'] = '/dev/shm/uploads/'
+app.config['ALLOWED_EXTENSIONS'] = {'png'}
+
+def check(uploaded_image):
+    with open('flag.txt', 'r') as f:
+        flag = f.read()
+    with Image.open(app.config['UPLOAD_FOLDER'] + uploaded_image) as image:
+        w, h = image.size
+        if w != 690 or h != 420:
+            return 0
+        if image.getpixel((412, 309)) != (52, 146, 235, 123):
+            return 0
+        if image.getpixel((12, 209)) != (42, 16, 125, 231):
+            return 0
+        if image.getpixel((264, 143)) != (122, 136, 25, 213):
+            return 0
+
+    with exiftool.ExifToolHelper() as et:
+        metadata = et.get_metadata(app.config['UPLOAD_FOLDER'] + uploaded_image)[0]
+        try:
+            if metadata["PNG:Description"] != "jctf{not_the_flag}":
+                return 0
+            if metadata["PNG:Title"] != "kool_pic":
+                return 0
+            if metadata["PNG:Author"] != "anon":
+                return 0
+        except:
+            return 0
+    return flag
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/upload', methods=['POST'])
+def upload():
+    if 'file' not in request.files:
+        return 'no file selected'
+
+    file = request.files['file']
+
+    if file.filename == '':
+        return 'no file selected'
+
+    if file and allowed_file(file.filename):
+        filename = file.filename
+
+        img_name = f'{str(random.randint(10000, 99999))}.png'
+        file.save(app.config['UPLOAD_FOLDER'] + img_name)
+        res = check(img_name)
+
+        if res == 0:
+            os.remove(app.config['UPLOAD_FOLDER'] + img_name)
+            return("hmmph. that image didn't seem to be good enough.")
+        else:
+            os.remove(app.config['UPLOAD_FOLDER'] + img_name)
+            return("now that's the perfect picture:<br>" + res)
+
+    return 'invalid file'
+
+if __name__ == '__main__':
+    app.run()
+
+</div>
+we can see it checks for height and width ans some specic values of image to match the given 
+it needs to be a png fle
+there are some specifications for meta data as fell 
+and if all is well we will get the flag
+so here is <b>what is did</b>
+<div>
+from flask import Flask, render_template, request
+from PIL import Image
+# import exiftool
+import random
+import os
+def f():
+  with Image.open('./png1.png') as image:
+      print("opened png")
+
+      new_width = 690
+      new_height = 420
+
+      # Resize the image
+      image = image.resize((new_width, new_height))
+
+      # Save the resized image
+      
+      pixel_data = image.load()
+      pixel_data[412,309] = (52, 146, 235, 123)
+      pixel_data[12,209] = (42, 16, 125, 231)
+      pixel_data[264,143] = (122, 136, 25, 213)
+      image.save("output_image.png")
+
+f()
+</div>
+a cross check validation
+<div>
+from flask import Flask, render_template, request
+from PIL import Image
+
+import random
+import os
+
+def check():
+    
+    with Image.open('./output_image.png') as image:
+        w, h = image.size
+        if w != 690 or h != 420:
+           print("line1 error")
+        if image.getpixel((412, 309)) != (52, 146, 235, 123):
+            print("line2 erro")
+        if image.getpixel((12, 209)) != (42, 16, 125, 231):
+            print("lline3 errro")
+        if image.getpixel((264, 143)) != (122, 136, 25, 213):
+           print("line4 errr")
+
+        print("all clear")
+check()
+</div>
+<b> now time to add specific metadata</b>
+<div>
+──(radha㉿kali)-[/media/sf_usb/imaginaryctf/web/perfectpic]
+└─$ ls
+output_image.png  perfect_picture.zip  try1.py
+perfect_picture   png1.png             try2.py
+                                                                                 
+┌──(radha㉿kali)-[/media/sf_usb/imaginaryctf/web/perfectpic]
+└─$ cp output_image.png output.png
+                                                                                 
+┌──(radha㉿kali)-[/media/sf_usb/imaginaryctf/web/perfectpic]
+└─$ ls
+output_image.png  perfect_picture      png1.png  try2.py
+output.png        perfect_picture.zip  try1.py
+                                                                                 
+┌──(radha㉿kali)-[/media/sf_usb/imaginaryctf/web/perfectpic]
+└─$ exiftool -PNG:Description="jctf{not_the_flag}" output.png  
+
+    1 image files updated
+                                                                                 
+┌──(radha㉿kali)-[/media/sf_usb/imaginaryctf/web/perfectpic]
+└─$ exiftool output.png                                      
+ExifTool Version Number         : 12.57
+File Name                       : output.png
+Directory                       : .
+File Size                       : 172 kB
+File Modification Date/Time     : 2023:07:22 07:12:05-04:00
+File Access Date/Time           : 2023:07:22 07:12:06-04:00
+File Inode Change Date/Time     : 2023:07:22 07:12:05-04:00
+File Permissions                : -rwxrwx---
+File Type                       : PNG
+File Type Extension             : png
+MIME Type                       : image/png
+Image Width                     : 690
+Image Height                    : 420
+Bit Depth                       : 8
+Color Type                      : RGB with Alpha
+Compression                     : Deflate/Inflate
+Filter                          : Adaptive
+Interlace                       : Noninterlaced
+Description                     : jctf{not_the_flag}
+Image Size                      : 690x420
+Megapixels                      : 0.290
+                                                                                 
+┌──(radha㉿kali)-[/media/sf_usb/imaginaryctf/web/perfectpic]
+└─$ exiftool -PNG:Title="kool_pic" output.png
+
+    1 image files updated
+                                                                                 
+┌──(radha㉿kali)-[/media/sf_usb/imaginaryctf/web/perfectpic]
+└─$ exiftool output.png                      
+ExifTool Version Number         : 12.57
+File Name                       : output.png
+Directory                       : .
+File Size                       : 172 kB
+File Modification Date/Time     : 2023:07:22 07:12:52-04:00
+File Access Date/Time           : 2023:07:22 07:12:53-04:00
+File Inode Change Date/Time     : 2023:07:22 07:12:52-04:00
+File Permissions                : -rwxrwx---
+File Type                       : PNG
+File Type Extension             : png
+MIME Type                       : image/png
+Image Width                     : 690
+Image Height                    : 420
+Bit Depth                       : 8
+Color Type                      : RGB with Alpha
+Compression                     : Deflate/Inflate
+Filter                          : Adaptive
+Interlace                       : Noninterlaced
+Description                     : jctf{not_the_flag}
+Title                           : kool_pic
+Image Size                      : 690x420
+Megapixels                      : 0.290
+                                                                                 
+┌──(radha㉿kali)-[/media/sf_usb/imaginaryctf/web/perfectpic]
+└─$ exiftool -"PNG:Author"="anon" output.png
+
+    1 image files updated
+                                                                                 
+┌──(radha㉿kali)-[/media/sf_usb/imaginaryctf/web/perfectpic]
+└─$ exiftool output.png                     
+ExifTool Version Number         : 12.57
+File Name                       : output.png
+Directory                       : .
+File Size                       : 172 kB
+File Modification Date/Time     : 2023:07:22 07:13:25-04:00
+File Access Date/Time           : 2023:07:22 07:13:26-04:00
+File Inode Change Date/Time     : 2023:07:22 07:13:25-04:00
+File Permissions                : -rwxrwx---
+File Type                       : PNG
+File Type Extension             : png
+MIME Type                       : image/png
+Image Width                     : 690
+Image Height                    : 420
+Bit Depth                       : 8
+Color Type                      : RGB with Alpha
+Compression                     : Deflate/Inflate
+Filter                          : Adaptive
+Interlace                       : Noninterlaced
+Description                     : jctf{not_the_flag}
+Title                           : kool_pic
+Author                          : anon
+Image Size                      : 690x420
+Megapixels                      : 0.290
+
+
+
+</div>
+now that's the perfect picture:
+ictf{7ruly_th3_n3x7_p1c4ss0_753433}
+<img src="perfect4.png">
+  <img src="perfect5.png">
+</code>
+</pre>
+</html>

@@ -1,0 +1,175 @@
+<html>
+  <pre>
+centralised
+decentralised
+distributed	
+1991
+bit gold decentralied digital currency 1998
+2008 bitcoin, application of block chain ,first crypto currency,solved the problem of double spending
+2013 etherium developed ,new crypto currncy
+2014 by now hundreds of crypto currencies
+-------------
+block chani is a multi purpose tool
+currenly it is used to build applications
+distributed ledger --data is copied  in multiple computers
+each block points to previous block
+block chain-- each block is divided into sevaral fields ,in each field a transaction is saved
+it is a append only database(difficult to delete)
+def::--------
+a block chanin is essentially a database where info is chronologically stored in a continuoulsy
+growing chain of data blocks,implemented in a decentralized netwrok in a way
+that creates data integrity truest and scurtiy for
+the nodes without the need for central authorieies or intermediators
+----a global spreadsheet
+incoruptible digital ledger where data can be  represented shared transacted
+==continuosly growing list of records called blocks which are linked secured using cryptography
+--------------------
+centralised---
+single ownere,fullcontrol,more prone to attacks,third party involvement is presen,
+easy to implement,vertical scaling,client server architecture
+decentralised---no single owner,no single point of failure,data is replicated on 
+different central servers,users can access data from other server if one failes
+distributed----
+no control of anyone all  have equla rights
+computation is disributed acroos components
+each node interact with each other by meseage passing
+peer to peer network 
+geopgraphically distributed
+---------------------------------
+consensus or mutual agreement
+when some complex algorithms are solved then only the data becomes part of block
+
+cryptogrphic hashing makes blockchain secure
+some use bucket hasing some toher 
+smart contract self executable code	which executes itself on every transacion processing
+--------
+block id
+nance 
+data
+hash
+andersbrownworth blockchain hash
+mine
+------------------
+public-permisionless,any one can use,read ,write,users are anonymours,	full decenrrailed,slow transperency
+private-permisssioned,single organisation,paritally decentaliesd	
+consortium-permissioned(Flexibility)
+-----------------
+consensus alogrithms :proof of work ,proof of stake
+byzantine general problem
+miners:these decide whether a block can join a chain or not
+miners have to use computational power to craete a hash or nance which is less than target hash,then the value is passed to other blocks if the agree it is correnct ,then the block can join
+miners are rewarded for doing computations correct,bit coin,litecoin	
+proof of stacke:orobros,nxt,ppcoin,u loose  money if u give somethig wrong
+    roof-of-stake is a cryptocurrency consensus mechanism for processing
+ transactions and creating new blocks in a blockchain. A consensus mechanism 
+is a method for validating entries into a distributed database and keeping the 
+database secure. In the case of cryptocurrency, the database is called a blockchain—
+so the consensus mechanism secures the blockchain.
+----------------
+proof of work -u do calculations,u add node,u get bitcoin as reward in blockchain
+-----------bitcoin-cryptocurrency
+ethereum a open source platoform ,for decentralised applications
+------------------------------------
+proof of work -miners-use most energy,all compete,mining,mining pools are dangerous,51%attack
+proof of stacke,select some node randomly ,validator,minting or forging,
+    ============================================
+    <b>patric fund me</b>
+    The syntax we use to declare a function in Solidity is as follows:
+function FunctionName([parameters]) {public|private|internal|external}
+[pure|constant|view|payable] [modifiers] [returns (return types)]
+
+forge install smartcontractkit/chainlink-brownie-contracts@version no --no-commit
+remappings=["@chainlink/contracts/=lib/chainlink-brownie-contracts/contracts/"]
+forge test
+'''
+file:FundMeTest.t.sol
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.18;
+import {Test} from "forge-std/Test.sol";
+contract FundMeTest is Test{
+    uint num=1;
+    function setUp() external {
+        num=2;
+    }
+    function testDemo() public{
+        assertEq(num,3);
+    }
+    function test1()public{
+        assertEq(num,2);
+    }
+}
+'''
+radha@DESKTOP-E4J3HG3:~/solidity/folder2$ forge test
+[⠃] Compiling...
+[⠢] Compiling 1 files with 0.8.19
+[⠔] Solc 0.8.19 finished in 2.24s
+Compiler run successful!
+
+Running 2 tests for test/FundMeTest.t.sol:FundMeTest
+[PASS] test1() (gas: 2324)
+[FAIL. Reason: Assertion failed.] testDemo() (gas: 16851)
+Test result: FAILED. 1 passed; 1 failed; 0 skipped; finished in 15.72ms
+Ran 1 test suites: 1 tests passed, 1 failed, 0 skipped (2 total tests)
+
+Failing tests:
+Encountered 1 failing test in test/FundMeTest.t.sol:FundMeTest
+[FAIL. Reason: Assertion failed.] testDemo() (gas: 16851)
+
+Encountered a total of 1 failing tests, 1 tests succeeded
+radha@DESKTOP-E4J3HG3:~/solidity/folder2$ =======================================================
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.18;
+import {Test,console} from "forge-std/Test.sol";
+import {FundMe} from "../src/FundMe.sol";
+contract FundMeTest is Test{
+    uint num=1;
+    FundMe fundMe;
+    function setUp() external {
+        num=2;
+    }
+    function testDemo() public{
+        console.log("hey num is ");
+        console.log(num);
+        assertEq(num,3);
+    }
+    function test1()public{
+        assertEq(num,2);
+    }
+    function testMinimumDollarIsFive() public{
+        fundMe=new FundMe();
+        assertEq(fundMe.MINIMUM_USD(),5e18);
+    }
+}
+===========te
+ function testOwnerIsMsgSender() public {
+            // assertEq(fundMe.i_owner(),msg.sender);
+            assertEq(fundMe.i_owner(),address(this));
+    }
+============
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.19;
+
+import {Script} from "forge-std/Script.sol";
+import {HelperConfig} from "./HelperConfig.s.sol";
+import {FundMe} from "../src/FundMe.sol";
+
+contract DeployFundMe is Script {
+    function run() external returns (FundMe, HelperConfig) {
+        HelperConfig helperConfig = new HelperConfig(); // This comes with our mocks!
+        address priceFeed = helperConfig.activeNetworkConfig();
+
+        vm.startBroadcast();
+        FundMe fundMe = new FundMe(priceFeed);
+        vm.stopBroadcast();
+        return (fundMe, helperConfig);
+    }
+}
+==========================
+radha@DESKTOP-E4J3HG3:~/solidity/folder2$ forge test -m testPriceFeedVersionIsAccurate
+===============================
+radha@DESKTOP-E4J3HG3:~/solidity/folder2$ forge test -vvv --fork-url $SEPOLIA_URL
+===============
+forge coverage --fork-url $SEPOLIA_URL
+  </pre>
+</html>

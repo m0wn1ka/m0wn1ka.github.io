@@ -1,0 +1,79 @@
+<html>
+  <title>amzing diamond
+    
+  </title>
+  <body>
+    <pre>
+    <code>
+      x=10 #max no of stars in line
+y=2*x-1 #total line space
+temp=(y-1)//2
+for i in range(x):
+    spaces=temp-i
+    print(" "*spaces,end="")
+    pat="* "
+    print(pat*(i-1))
+for i in range(x-1,-1,-1):
+    spaces=temp-i
+    print(" "*spaces,end="")
+    pat="* "
+    print(pat*(i-1))
+    
+    
+    
+
+    </code>
+          * 
+      * * 
+     * * * 
+    * * * * 
+   * * * * * 
+  * * * * * * 
+ * * * * * * * 
+* * * * * * * * 
+* * * * * * * * 
+ * * * * * * * 
+  * * * * * * 
+   * * * * * 
+    * * * * 
+     * * * 
+      * * 
+       * 
+        
+    
+==========================================
+           cod in php
+           <code>
+ &lt;?php
+$x=20;
+$y = 2*$x-1;
+$x=$x-1;
+$temp= floor(($y-1)/2);
+$number = range(1,$x);
+echo "<pre>";
+foreach ($number as $i){
+    $spaces=$temp-$i;
+    $space=str_repeat(" ",$spaces);
+    echo $space;
+    $pat= "* ";
+    $tempx=$i-1;
+    $op= str_repeat($pat,$tempx);
+    echo $op;
+    echo "\n";
+}
+$number=range($x-1,1);
+foreach($number as $i){
+    $spaces=$temp-$i;
+    echo str_repeat(" ",$spaces);
+    $pat="* ";
+    echo str_repeat($pat,$i-1);
+    echo "\n";
+}
+echo "</pre>";
+
+?>
+          </code>
+       </pre>
+
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <title>bsides writeups</title>
+  </head>
+  
+ <body>
+   <h1>evt</h1>
+   the problem :
+   <pre>
+   Can you WIN from EVT?
+100
+Someone tried to login to my computer can you see if there is something weird. What is the number of the failed login , what is the time/date of the last successful login ?
+
+Challenge Link
+
+BSidesIndore{Number of failed logins_m/dd/yyyy_hh:mm:ssPM/AM} in UTC
+
+Author: 0xSh3rl0ck
+  we are given <a href="Challenge.rar">this</a>
+  <h2>what i did</h2>
+  ->convert the rar to zip using winrar
+  ->unzip
+  ->then  go to logs folder
+  -><a href="https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/default.aspx">this</a>site is usefu
+  ->got all 4625 and 4624s from security.evtx
+  ->used event viewr app from windows
+  :(still the flag is incoorect
+  ->after a while i got the word utc
+  ->did kinda of check of logs and system time realtion ..
+  ->changed my system time to utc
+  ->boom got the flag:BSidesIndore{6_8/23/2022_10:56:09AM}
+  <br>
+  <br>
+    <h1>operational cipher vault</h1>
+    
+  
+   Operation Cipher Vault,
+100
+Welcome to "Operation Cipher Vault," an immersive CTF challenge inspired by the world of secret service operations. You have been recruited 
+   as an elite agent to infiltrate a highly secure facility known as the Cipher Vault. Your mission is to obtain a confidential flag hidden deep
+   within the vault's mainframe. The vault's security relies on a password input field that triggers an error on improper password length. Your task
+   is to exploit this vulnerability, crack the password, and retrieve the top-secret flag to complete your mission.
+<br>
+http://34.29.242.60:1111/
+the way i solved:
+it clearly says the length is imp
+->i tried 5,10,15,20 length keys
+->increasing and decreasing manner go the flag:
+finding out that length plays the role is the key
+<br>
+BSidesIndore{br4v0_y0u_cr4ck3d_17}
+</pre>
+   <h1>board</h1>
+    <img src="Screenshot (19).png" alt="scoreboard" style="width: 20%;height:20%" >
+           <img src="Screenshot (21).png" style="width: 20%;height:20%" alt="challenges">
+  </body>
+</html>

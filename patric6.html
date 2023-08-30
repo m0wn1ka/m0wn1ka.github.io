@@ -1,0 +1,218 @@
+<html>
+  <pre>
+    radha@DESKTOP-E4J3HG3:~/solidity/folder1$ forge script script/DeploySimpleStorage.s.sol --rpc-url $SEPOLIA_URL --private-key $SEPOLIA_KEY --broadcast
+[⠃] Compiling...
+No files changed, compilation skipped
+Script ran successfully.
+
+== Return ==
+0: contract SimpleStorage 0x9F9cd3f48280A9349D58F60E4e5d3bE7e2360935
+
+## Setting up (1) EVMs.
+
+==========================
+
+Chain 11155111
+
+Estimated gas price: 3.000000042 gwei
+
+Estimated total gas used for script: 464097
+
+Estimated amount required: 0.001392291019492074 ETH
+
+==========================
+
+###
+Finding wallets for all the necessary addresses...
+##
+Sending transactions [0 - 0].
+⠁ [00:00:00] [###########################################################] 1/1 txes (0.0s)
+Transactions saved to: /home/radha/solidity/folder1/broadcast/DeploySimpleStorage.s.sol/11155111/run-latest.json
+
+Sensitive values saved to: /home/radha/solidity/folder1/cache/DeploySimpleStorage.s.sol/11155111/run-latest.json
+
+##
+Waiting for receipts.
+⠉ [00:00:07] [#######################################################] 1/1 receipts (0.0s)
+##### sepolia
+✅  [Success]Hash: 0xcc714ae2f806581aa1c3256d9b9d560e71a4b3aa0013d9a1cd9060752764e828
+Contract Address: 0x9F9cd3f48280A9349D58F60E4e5d3bE7e2360935
+Block: 4047232
+Paid: 0.001071264007855936 ETH (357088 gas * 3.000000022 gwei)
+
+
+Transactions saved to: /home/radha/solidity/folder1/broadcast/DeploySimpleStorage.s.sol/11155111/run-latest.json
+
+Sensitive values saved to: /home/radha/solidity/folder1/cache/DeploySimpleStorage.s.sol/11155111/run-latest.json
+
+
+
+==========================
+
+ONCHAIN EXECUTION COMPLETE & SUCCESSFUL.
+Total Paid: 0.001071264007855936 ETH (357088 gas * avg 3.000000022 gwei)
+
+Transactions saved to: /home/radha/solidity/folder1/broadcast/DeploySimpleStorage.s.sol/11155111/run-latest.json
+
+Sensitive values saved to: /home/radha/solidity/folder1/cache/DeploySimpleStorage.s.sol/11155111/run-latest.json
+
+radha@DESKTOP-E4J3HG3:~/solidity/folder1$ 
+============================================
+import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
+
+https://github.com/smartcontractkit/chainlink-brownie-contracts
+
+radha@DESKTOP-E4J3HG3:~/solidity/fundme$ forge install smartcontractkit/chainlink-brownie-contracts --no-commit
+Installing chainlink-brownie-contracts in /home/radha/solidity/fundme/lib/chainlink-brownie-contracts (url: Some("https://github.com/smartcontractkit/chainlink-brownie-contracts"), tag: None)
+Cloning into '/home/radha/solidity/fundme/lib/chainlink-brownie-contracts'...
+remote: Enumerating objects: 32003, done.
+remote: Counting objects: 100% (1604/1604), done.
+remote: Compressing objects: 100% (577/577), done.
+remote: Total 32003 (delta 920), reused 1535 (delta 862), pack-reused 30399
+Receiving objects: 100% (32003/32003), 46.28 MiB | 675.00 KiB/s, done.
+Resolving deltas: 100% (8131/8131), done.
+    Installed chainlink-brownie-contracts 1.2.0
+radha@DESKTOP-E4J3HG3:~/solidity/fundme$ 
+===========================
+
+radha@DESKTOP-E4J3HG3:~/solidity/fundme$ forge script script/DeployFundMe.s.sol
+[⠢] Compiling...
+[⠒] Compiling 2 files with 0.8.19
+[⠃] Solc 0.8.19 finished in 2.51s
+Compiler run successful with warnings:
+Warning (2072): Unused local variable.
+ --> script/DeployFundMe.s.sol:8:5:
+  |
+8 |     FundMe fundMe =  new FundMe();
+  |     ^^^^^^^^^^^^^
+
+Script ran successfully.
+Gas used: 444605
+
+If you wish to simulate on-chain transactions pass a RPC URL.
+radha@DESKTOP-E4J3HG3:~/solidity/fundme$  
+=======================================
+radha@DESKTOP-E4J3HG3:~/solidity/fundme$ forge test --fork-url $SEPOLIA_URL
+[⠒] Compiling...
+No files changed, compilation skipped
+
+Running 3 tests for test/FundMeTest.t.sol:FundMeTest
+[PASS] testDemo() (gas: 5405)
+[PASS] testOwnerIsMsgSender() (gas: 7704)
+[PASS] testPriceFeedVersionIsAccurate() (gas: 14034)
+Test result: ok. 3 passed; 0 failed; 0 skipped; finished in 4.18s
+Ran 1 test suites: 3 tests passed, 0 failed, 0 skipped (3 total tests)
+radha@DESKTOP-E4J3HG3:~/solidity/fundme$ forge test
+[⠊] Compiling...
+No files changed, compilation skipped
+
+Running 3 tests for test/FundMeTest.t.sol:FundMeTest
+[PASS] testDemo() (gas: 5405)
+[PASS] testOwnerIsMsgSender() (gas: 7704)
+[FAIL. Reason: EvmError: Revert] testPriceFeedVersionIsAccurate() (gas: 8019)
+Test result: FAILED. 2 passed; 1 failed; 0 skipped; finished in 6.02ms
+Ran 1 test suites: 2 tests passed, 1 failed, 0 skipped (3 total tests)
+
+Failing tests:
+Encountered 1 failing test in test/FundMeTest.t.sol:FundMeTest
+[FAIL. Reason: EvmError: Revert] testPriceFeedVersionIsAccurate() (gas: 8019)
+
+Encountered a total of 1 failing tests, 2 tests succeeded
+radha@DESKTOP-E4J3HG3:~/solidity/fundme$ 
+===========================
+#FORGE COVERAGE
+radha@DESKTOP-E4J3HG3:~/solidity/fundme$ forge test --fork-url $SEPOLIA_URL
+[⠒] Compiling...
+No files changed, compilation skipped
+
+Running 3 tests for test/FundMeTest.t.sol:FundMeTest
+[PASS] testDemo() (gas: 5405)
+[PASS] testOwnerIsMsgSender() (gas: 7704)
+[PASS] testPriceFeedVersionIsAccurate() (gas: 14034)
+Test result: ok. 3 passed; 0 failed; 0 skipped; finished in 4.18s
+Ran 1 test suites: 3 tests passed, 0 failed, 0 skipped (3 total tests)
+radha@DESKTOP-E4J3HG3:~/solidity/fundme$ forge test
+[⠊] Compiling...
+No files changed, compilation skipped
+
+Running 3 tests for test/FundMeTest.t.sol:FundMeTest
+[PASS] testDemo() (gas: 5405)
+[PASS] testOwnerIsMsgSender() (gas: 7704)
+[FAIL. Reason: EvmError: Revert] testPriceFeedVersionIsAccurate() (gas: 8019)
+Test result: FAILED. 2 passed; 1 failed; 0 skipped; finished in 6.02ms
+Ran 1 test suites: 2 tests passed, 1 failed, 0 skipped (3 total tests)
+
+Failing tests:
+Encountered 1 failing test in test/FundMeTest.t.sol:FundMeTest
+[FAIL. Reason: EvmError: Revert] testPriceFeedVersionIsAccurate() (gas: 8019)
+
+Encountered a total of 1 failing tests, 2 tests succeeded
+radha@DESKTOP-E4J3HG3:~/solidity/fundme$ 
+==================
+#deployfundem .s.osl
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.18;
+import {FundMe} from "../src/FundMe.sol";
+import {Script} from "forge-std/Script.sol";
+contract DeployFundMe  is Script{
+   function run() external returns (FundMe) {
+    vm.startBroadcast();
+    FundMe fundMe =  new FundMe(0x694AA1769357215DE4FAC081bf1f309aDC325306);
+    vm.stopBroadcast(); 
+    return fundMe;   
+   }
+}
+----------------
+#fundmetest.t.sol
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.18;
+import {Test,console} from "forge-std/Test.sol";
+import {FundMe} from "../src/FundMe.sol";
+import {DeployFundMe} from "../script/DeployFundMe.s.sol";
+contract FundMeTest is Test{
+    FundMe fundMe;
+    function setUp() external{
+        DeployFundMe deployFundMe=new DeployFundMe();
+        // fundMe =new FundMe(0x694AA1769357215DE4FAC081bf1f309aDC325306);
+        fundMe=deployFundMe.run();
+    }
+    function testDemo() external{
+        // console.log(fundMe.MINIMUM_USD());
+        assertEq(fundMe.MINIMUM_USD(),5e18);
+    }
+    function testOwnerIsMsgSender() external{
+        assertEq(fundMe.i_owner(),msg.sender);
+    }
+    function testPriceFeedVersionIsAccurate() external{
+        assertEq(uint256(fundMe.getVersion()),4);
+        console.log(uint256(fundMe.getVersion()));
+        // assertEq(4,4);
+    }
+}
+
+=====================
+radha@DESKTOP-E4J3HG3:~/solidity/fundme$ forge test --fork-url $SEPOLIA_URL
+[⠒] Compiling...
+[⠑] Compiling 1 files with 0.8.19
+[⠊] Solc 0.8.19 finished in 2.51s
+Compiler run successful!
+
+
+
+Running 3 tests for test/FundMeTest.t.sol:FundMeTest
+[PASS] testDemo() (gas: 5405)
+[PASS] testOwnerIsMsgSender() (gas: 7733)
+[PASS] testPriceFeedVersionIsAccurate() (gas: 21393)
+Test result: ok. 3 passed; 0 failed; 0 skipped; finished in 6.16s
+Ran 1 test suites: 3 tests passed, 0 failed, 0 skipped (3 total tests)
+radha@DESKTOP-E4J3HG3:~/solidity/fundme$ 
+==========================================================   
+#gas
+forge snapshot 
+chisel
+vm.prank(xxx)
+arrange,act,assert
+vm.txGasPrice	
+gasleft()
+  </pre>
+</html>

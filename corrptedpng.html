@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body bgcolor="pink">
+    <h4>about:</h4>
+    <a href="https://damoneer.github.io/hacker-blog/Chunkies-Forensics">this</a>site is useful<br>
+    png :Portable Network Graphics<br>
+    stegnography:technique of hiding sensitive data in seemingly normal file<br>
+    pngcheck::pngcheck verifies the integrity of PNG, JNG and MNG files (by checking the internal 32-bit CRCs, a.k.a. checksums etc<br>
+
+    <h4>problem</h4>
+    Corrupted png
+<br>
+Do you know what are magic bytes?
+<br>
+Flag format: Invaders0x1CTF{}
+    <h4>solving</h4>
+    <pre>
+    step1:<br>
+    ──(radha㉿kali)-[~/Downloads]
+└─$ file corrept.png
+corrept.png: data
+                                                                                                                                                                       
+┌──(radha㉿kali)-[~/Downloads]
+└─$ pngcheck -v corrept.png
+File: corrept.png (1245348 bytes)
+  this is neither a PNG or JNG image nor a MNG stream
+ERRORS DETECTED in corrept.png
+                                                                                                                                                                       
+┌──(radha㉿kali)-[~/Downloads]
+└─$ bless   
+Failed to open plugins directory: Could not find a part of the path '/home/radha/.config/bless/plugins'.
+Failed to open plugins directory: Could not find a part of the path '/home/radha/.config/bless/plugins'.
+Failed to open plugins directory: Could not find a part of the path '/home/radha/.config/bless/plugins'.
+Could not find file "/home/radha/.config/bless/export_patterns"
+->now i oopened the file using bless
+->used one uncorrepted pnag and another this correpted png
+->changed the header numbers and ihdr Chunkies-Forensics
+->saved the file reopened to find the flag in the image
+the images :
+the given image
+<img src="liokjhn.jpg" alt="correpted image">
+<img src="pic1.jpeg" alt="pic1">
+<img src="pic2.jpeg" alt="pic2">
+<img src="pic3.jpeg" alt="final ans">
+</pre>
+
+
+    
+</body>
+</html>

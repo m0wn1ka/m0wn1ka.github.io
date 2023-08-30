@@ -1,0 +1,99 @@
+<html>
+  <head>
+    <title>africa ctf</title>
+  </head>
+  <body>
+    <h1>findme forensics</h1>
+    <pre>
+      <h2>problem</h2>
+      
+Find Me
+100
+You're working as an intern at a cybersecurity firm, and your boss has given you a challenge to test your packet sniffing skills. The company's IT department suspects that someone on the network is using a weak password, and they've asked you to find it before the boss does.
+
+Your task is to analyze the pcap file provided by the IT department and locate the password before your boss does. The pcap file contains network traffic captured from a computer connected to the company's network. The password has been hidden somewhere within the packets, and you'll need to use your packet sniffing skills to find it.
+
+Chall file
+
+Flag Format : battleCTF{decoded password}
+
+Author: C4xp3r
+      <h2>solution</h2>
+      download pcapng file
+export all http files
+open main.html
+u get user id and password
+"userid=hardawayn&pswrd=UEFwZHNqUlRhZQ%3D%3D"
+open index.html
+there in script
+"   script
+		function modifyPass(){
+			document.login.pswrd.value = btoa(document.login.pswrd.value);
+		}
+	script
+so what we have is after being application of btoa
+so apply atob function 
+we get the ans :PApdsjRTae
+note remove %3d as they mean = in hex format which are i think used to tell the password format is in hex
+      <h1>thumb
+      </h1>
+      <h2>problme</h2>
+      Thumb
+100
+Title: "Crack the Meme Code: Unlock Your Girlfriend's Hidden Secrets"
+
+Description: Your girlfriend loves to share memes with you, but you suspect there's more to them than just a good laugh. You're convinced she's hiding something, but you don't know what it is. Now, it's time to become a digital detective and uncover the secrets hidden within the memes!
+
+Your mission, should you choose to accept it, is to crack the meme code and reveal your girlfriend's hidden secrets. You'll need to use your digital forensics skills to uncover any hidden information and decipher any code she might have used to encrypt the messages. It won't be easy, but if you're persistent and willing to put in the work, you'll be rewarded with the juicy secrets hidden within.
+
+So, get ready to dive into the world of memes and become the ultimate digital detective. Who knows what kind of surprises your girlfriend has been hiding? Maybe it's her secret recipe for chocolate cake, or her plans to surprise you with a weekend getaway. Whatever it is, it's up to you to crack the meme code and unlock the hidden secrets. The clock is ticking, so get cracking!
+
+Chall File : file.jpeg
+
+Author: C4xp3r
+      <h2>solution</h2>
+      battleCTF{3XP3C71N6_7HUM8N411_70_83 _41W4Y5_83_H1DD3N}
+
+
+https://www.dcode.fr/exif-thumbnail
+      <h1>africa beauty</h1>
+      <h2>problem</h2>
+      Africa Beauty
+100
+Investigation
+
+AfricaBeauty.zip
+
+Flag Format : battleCTF{Make_Camera Model_Front/Back_Country_City}
+
+Make : Manufacturer
+
+Camera Model: if the camera model is Iphone 7 MAX, set to Iphone7MAX
+
+Front/Back: indicate whether front or rear camera is used.
+
+Country: The country where the photo was taken.
+
+City: The City.
+
+Author: 0xRAVEN
+
+<h2>solution</h2>
+      battleCTF{
+
+just use exif tool
+Camera Model Name               : Pixel 4 XL
+Make                            : Google
+Lens ID                         : Pixel 4 XL back camera 4.38mm f/1.73
+GPS Latitude                    : 6 deg 20' 59.76" N
+GPS Longitude                   : 2 deg 24' 48.96" E
+Boulevard de la Marina, Cotonou, Benin
+
+Flag Format : battleCTF{Make_Camera Model_Front/Back_Country_City}
+battleCTF{Google_Pixel4XL_Back_Benin_Cotonou}
+    </pre>
+    <h1>scoreboard</h1>
+     <img src="Screenshot (26).png" alt="scoreboard" style="width: 20%;height:20%" >
+       <img src="Screenshot (27).png" style="width: 20%;height:20%" alt="challenges">
+  </body>
+</html>

@@ -1,0 +1,264 @@
+<html>
+  <pre>
+    snapshots while i was learning
+    forge init 	
+===================
+radha@DESKTOP-E4J3HG3:~/solidity/folder1$ ls
+radha@DESKTOP-E4J3HG3:~/solidity/folder1$ forge init
+Initializing /home/radha/solidity/folder1...
+Error: 
+failed to commit (code=Some(128), stdout="", stderr="Author identity unknown\n\n*** Please tell me who you are.\n\nRun\n\n  git config --global user.email \"you@example.com\"\n  git config --global user.name \"Your Name\"\n\nto set your account's default identity.\nOmit --global to set the identity only in this repository.\n\nfatal: empty ident name (for <radha@DESKTOP-E4J3HG3.localdomain>) not allowed")
+radha@DESKTOP-E4J3HG3:~/solidity/folder1$ ls
+README.md  foundry.toml  script  src  test
+radha@DESKTOP-E4J3HG3:~/solidity/folder1$ git config --global user.email "rambabu986688@gmail.com"                              
+git config --global user.name "m0wn1ka"
+radha@DESKTOP-E4J3HG3:~/solidity/folder1$ cd ..
+radha@DESKTOP-E4J3HG3:~/solidity$ mkdir folder2
+radha@DESKTOP-E4J3HG3:~/solidity$ cd folder2
+radha@DESKTOP-E4J3HG3:~/solidity/folder2$ forge init
+Initializing /home/radha/solidity/folder2...
+Installing forge-std in /home/radha/solidity/folder2/lib/forge-std (url: Some("https://github.com/foundry-rs/forge-std"), tag: None)
+Cloning into '/home/radha/solidity/folder2/lib/forge-std'...
+remote: Enumerating objects: 1874, done.
+remote: Counting objects: 100% (1870/1870), done.
+remote: Compressing objects: 100% (731/731), done.
+remote: Total 1874 (delta 1201), reused 1713 (delta 1076), pack-reused 4
+Receiving objects: 100% (1874/1874), 520.71 KiB | 567.00 KiB/s, done.
+Resolving deltas: 100% (1201/1201), done.
+Submodule 'lib/ds-test' (https://github.com/dapphub/ds-test) registered for path 'lib/forge-std/lib/ds-test'
+Cloning into '/home/radha/solidity/folder2/lib/forge-std/lib/ds-test'...
+remote: Enumerating objects: 313, done.        
+remote: Counting objects: 100% (171/171), done.        
+remote: Compressing objects: 100% (87/87), done.        
+remote: Total 313 (delta 90), reused 135 (delta 75), pack-reused 142        
+Receiving objects: 100% (313/313), 71.98 KiB | 554.00 KiB/s, done.
+Resolving deltas: 100% (129/129), done.
+    Installed forge-std v1.6.0
+    Initialized forge project
+radha@DESKTOP-E4J3HG3:~/solidity/folder2$ ls
+README.md  foundry.toml  lib  script  src  test
+radha@DESKTOP-E4J3HG3:~/solidity/folder2$ 
+=============================================
+forge init --force .
+	
+=======================================
+## Foundry
+
+**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+
+Foundry consists of:
+
+-   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
+-   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
+-   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
+-   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+
+## Documentation
+
+https://book.getfoundry.sh/
+
+## Usage
+
+### Build
+
+```shell
+$ forge build
+```
+
+### Test
+
+```shell
+$ forge test
+```
+
+### Format
+
+```shell
+$ forge fmt
+```
+
+### Gas Snapshots
+
+```shell
+$ forge snapshot
+```
+
+### Anvil
+
+```shell
+$ anvil
+```
+
+### Deploy
+
+```shell
+$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
+```
+
+### Cast
+
+```shell
+$ cast <subcommand>
+```
+
+### Help
+
+```shell
+$ forge --help
+$ anvil --help
+$ cast --help
+```
+
+=========================
+A TOML (Tom's Obvious, Minimal Language) file is a configuration file format that is easy to read and write due to its simple and straightforward syntax. It was designed to be a human-friendly alternative to more complex configuration formats like JSON, XML, or YAML.
+
+TOML files use a key-value pair format to represent data
+=================
+press ctrl+shift+p
+type format documetn in vs code 
+document which is unformatted will be formatted
+===================================
+forge compile :will give folderout with filename.json	
+===========
+anvil ,ganache are local blockchains
+<h1>truffle</h1>
+=========
+adding a new network manually
+importing an account using local blockchains private keys
+=============================
+<h1>deploying to anvil</h1>
+radha@DESKTOP-E4J3HG3:~/solidity/folder1$ forge create SimpleStorage --rpc-url http://127.0.0.1:8545 --interactive
+[⠒] Compiling...
+No files changed, compilation skipped
+Enter private key: Deployer: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+Deployed to: 0x5FbDB2315678afecb367f032d93F642f64180aa3
+Transaction hash: 0xea0a522501a1cd40a39b1bbed53077d229c4818ea2205a03ccc4e3436ce05b3b
+==============================
+ forge create SimpleStorage --interactive
+
+=======================
+we can deploy a contract not just by using cmd but also by writing a script
+we write a script in solidity (contract lang vs scripting lang) 
+the extesnion in foundry by convetion for script files is ".s.sol"
+==========================
+radha@DESKTOP-E4J3HG3:~/solidity/folder1$ forge script script/DeploySimpleStorage.s.sol
+[⠆] Compiling...
+[⠆] Compiling 16 files with 0.8.19
+[⠒] Solc 0.8.19 finished in 9.07s
+Compiler run successful!
+Script ran successfully.
+Gas used: 338569
+
+== Return ==
+0: contract SimpleStorage 0x90193C961A926261B756D1E5bb255e67ff9498A1
+
+If you wish to simulate on-chain transactions pass a RPC 
+=========================
+// SPDX-License-Identifier:MIT
+pragma solidity ^0.8.18;
+import {Script} from "forge-std/Script.sol";
+import {SimpleStorage} from "../src/SimpleStorage.sol";
+contract DeploySimpleStorage is Script{
+    function run() external returns(SimpleStorage){
+        vm.startBroadcast();
+        SimpleStorage simpleStorage = new SimpleStorage();  
+        vm.stopBroadcast();
+        return simpleStorage;
+    }
+}
+==========================
+<h1>deploying </h1>
+radha@DESKTOP-E4J3HG3:~/solidity/folder1$ forge script script/DeploySimpleStorage.s.sol --rpc-url http://127.0.0.1:8545 --broadcast --private-key 0x5de4111afa1a4b94908f83103eb1f1706367c2e68ca870fc3fb9a804cdab365a
+[⠒] Compiling...
+No files changed, compilation skipped
+Script ran successfully.
+
+== Return ==
+0: contract SimpleStorage 0x663F3ad617193148711d28f5334eE4Ed07016602
+
+EIP-3855 is not supported in one or more of the RPCs used.
+Unsupported Chain IDs: 31337.
+Contracts deployed with a Solidity version equal or higher than 0.8.20 might not work properly.
+For more information, please see https://eips.ethereum.org/EIPS/eip-3855
+
+## Setting up (1) EVMs.
+
+==========================
+
+Chain 31337
+
+Estimated gas price: 5 gwei
+
+Estimated total gas used for script: 464066
+
+Estimated amount required: 0.00232033 ETH
+
+==========================
+
+###
+Finding wallets for all the necessary addresses...
+##
+Sending transactions [0 - 0].
+⠁ [00:00:00] [###########################################] 1/1 txes (0.0s)
+Transactions saved to: /home/radha/solidity/folder1/broadcast/DeploySimpleStorage.s.sol/31337/run-latest.json
+
+Sensitive values saved to: /home/radha/solidity/folder1/cache/DeploySimpleStorage.s.sol/31337/run-latest.json
+
+##
+Waiting for receipts.
+⠉ [00:00:00] [#######################################] 1/1 receipts (0.0s)
+##### anvil-hardhat
+✅  [Success]Hash: 0xcf81444177689e07a591e90d07c7776945e40b9f607abaf04fe69c9f9616b55f
+Contract Address: 0x663F3ad617193148711d28f5334eE4Ed07016602
+Block: 1
+Paid: 0.001428256 ETH (357064 gas * 4 gwei)
+
+
+Transactions saved to: /home/radha/solidity/folder1/broadcast/DeploySimpleStorage.s.sol/31337/run-latest.json
+
+Sensitive values saved to: /home/radha/solidity/folder1/cache/DeploySimpleStorage.s.sol/31337/run-latest.json
+
+
+
+==========================
+
+ONCHAIN EXECUTION COMPLETE & SUCCESSFUL.
+Total Paid: 0.001428256 ETH (357064 gas * avg 4 gwei)
+
+Transactions saved to: /home/radha/solidity/folder1/broadcast/DeploySimpleStorage.s.sol/31337/run-latest.json
+
+Sensitive values saved to: /home/radha/solidity/folder1/cache/DeploySimpleStorage.s.sol/31337/run-latest.json
+
+radha@DESKTOP-E4J3HG3:~/solidity/folder1$ 
+=====================
+cast --to-base 0x71888 dec 
+==================
+npx thirdweb deploy
+=======================
+<h1>call a call funciton</h1>
+radha@DESKTOP-E4J3HG3:~/solidity/folder1$ cast send 0x2E983A1Ba5e8b38AAAeC4B440B9dDcFBf72E15d1 "store(uint256)" 3 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+
+blockHash               0x05d057fb5737cd5f03ef53600755a2aa9ed4f08bd47535f348ca439ca91cfe9c
+blockNumber             3
+contractAddress         
+cumulativeGasUsed       43538
+effectiveGasPrice       3770841038
+gasUsed                 43538
+logs                    []
+logsBloom               0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+root                    
+status                  1
+transactionHash         0x6cb7cd0197634d8b58cd47a0f9da5349efcb18cfbe8c400f474d3f3746ecd9d6
+transactionIndex        0
+type                    2
+radha@DESKTOP-E4J3HG3:~/soli
+==============================
+<h1>retrieving or reading value</h1>
+radha@DESKTOP-E4J3HG3:~/solidity/folder1$ cast call 0x2E983A1Ba5e8b38AAAeC4B440B9dDcFBf72E15d1 "retrieve()" --private-key 0xac0974bec39a17e36ba4a6b4
+d238ff944bacb478cbed5efcae784d7bf4f2ff80
+0x0000000000000000000000000000000000000000000000000000000000000003
+
+radha@DESKTOP-E4J3HG3:~/solidity/folder1$ 
+===============================================
+  </pre>
+</html>
